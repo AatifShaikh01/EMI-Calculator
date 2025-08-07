@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMI Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="opening-animation">
+        <div class="animation-content">
+            <h1>EMI Calculator</h1>
+            <p>Calculate your loan payments with ease</p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <p>Powered By CODRENIX</p>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div class="brand">EMI Calculator</div>
+        <div class="nav-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-menu">
+            <li><button class="loan-btn active" data-loan="general">General</button></li>
+            <li><button class="loan-btn" data-loan="home">Home Loan</button></li>
+            <li><button class="loan-btn" data-loan="car">Car Loan</button></li>
+            <li><button class="loan-btn" data-loan="education">Education Loan</button></li>
+            <li><button class="loan-btn" data-loan="bike">Bike Loan</button></li>
+            <li class="theme-toggle">
+                <button id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="calculator-container">
+            <div id="general-calculator" class="calculator active">
+                <div class="loan-info">
+                    General loans can be used for various purposes with flexible terms.
+                </div>
+                <div class="input-group">
+                    <label for="general-amount">Loan Amount (₹)</label>
+                    <input type="range" id="general-amount" min="100000" max="10000000" step="10000" value="1000000">
+                    <div class="value-display">
+                        <span id="general-amount-value">10,00,000</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="general-interest">Interest Rate (% p.a.)</label>
+                    <input type="range" id="general-interest" min="5" max="20" step="0.1" value="8.5">
+                    <div class="value-display">
+                        <span id="general-interest-value">8.5</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="general-tenure">Loan Tenure (years)</label>
+                    <input type="range" id="general-tenure" min="1" max="30" step="1" value="10">
+                    <div class="value-display">
+                        <span id="general-tenure-value">10</span>
+                    </div>
+                </div>
+                <button class="calculate-btn" id="general-calculate">Calculate EMI</button>
+                <div class="results">
+                    <div class="result-box">
+                        <span class="result-label">Monthly EMI</span>
+                        <span class="result-value" id="general-emi">₹12,398</span>
+                    </div>
+                    <div class="result-box">
+                        <span class="result-label">Total Interest</span>
+                        <span class="result-value" id="general-total-interest">₹4,87,760</span>
+                    </div>
+                    <div class="result-box">
+                        <span class="result-label">Total Payment</span>
+                        <span class="result-value" id="general-total-payment">₹14,87,760</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="home-calculator" class="calculator">
+                <div class="loan-info">
+                    Home loans typically have lower interest rates (8-12%) and longer tenures (up to 30 years).
+                </div>
+                <div class="input-group">
+                    <label for="home-amount">Loan Amount (₹)</label>
+                    <input type="range" id="home-amount" min="100000" max="10000000" step="10000" value="3000000">
+                    <div class="value-display">
+                        <span id="home-amount-value">30,00,000</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="home-interest">Interest Rate (% p.a.)</label>
+                    <input type="range" id="home-interest" min="5" max="20" step="0.1" value="8.4">
+                    <div class="value-display">
+                        <span id="home-interest-value">8.4</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="home-tenure">Loan Tenure (years)</label>
+                    <input type="range" id="home-tenure" min="1" max="30" step="1" value="20">
+                    <div class="value-display">
+                        <span id="home-tenure-value">20</span>
+                    </div>
+                </div>
+                <button class="calculate-btn" id="home-calculate">Calculate EMI</button>
+                <div class="results">
+                    <div class="result-box">
+                        <span class="result-label">Monthly EMI</span>
+                        <span class="result-value" id="home-emi">₹25,780</span>
+                    </div>
+                    <div class="result-box">
+                        <span class="result-label">Total Interest</span>
+                        <span class="result-value" id="home-total-interest">₹31,87,200</span>
+                    </div>
+                    <div class="result-box">
+                        <span class="result-label">Total Payment</span>
+                        <span class="result-value" id="home-total-payment">₹61,87,200</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="car-calculator" class="calculator">
+                <div class="loan-info">
+                    Car loans typically have higher interest rates (9-15%) and shorter tenures (1-7 years).
+                </div>
+                <div class="input-group">
+                    <label for="car-amount">Loan Amount (₹)</label>
+                    <input type="range" id="car-amount" min="100000" max="10000000" step="10000" value="800000">
+                    <div class="value-display">
+                        <span id="car-amount-value">8,00,000</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="car-interest">Interest Rate (% p.a.)</label>
+                    <input type="range" id="car-interest" min="5" max="20" step="0.1" value="10.5">
+                    <div class="value-display">
+                        <span id="car-interest-value">10.5</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="car-tenure">Loan Tenure (years)</label>
+                    <input type="range" id="car-tenure" min="1" max="7" step="1" value="5">
+                    <div class="value-display">
+                        <span id="car-tenure-value">5</span>
+                    </div>
+                </div>
+                <button class="calculate-btn" id="car-calculate">Calculate EMI</button>
+                <div class="results">
+                    <div class="result-box">
+                        <span class="result-label">Monthly EMI</span>
+                        <span class="result-value" id="car-emi">₹17,196</span>
+                    </div>
+                    <div class="result-box">
+                        <span class="result-label">Total Interest</span>
+                        <span class="result-value" id="car-total-interest">₹2,31,760</span>
+                    </div>
+                    <div class="result-box">
+                        <span class="result-label">Total Payment</span>
+                        <span class="result-value" id="car-total-payment">₹10,31,760</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="education-calculator" class="calculator">
+                <div class="loan-info">
+                    Education loans often have lower interest rates (8-12%) with moratorium periods.
+                </div>
+                <div class="input-group">
+                    <label for="education-amount">Loan Amount (₹)</label>
+                    <input type="range" id="education-amount" min="100000" max="10000000" step="10000" value="500000">
+                    <div class="value-display">
+                        <span id="education-amount-value">5,00,000</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="education-interest">Interest Rate (% p.a.)</label>
+                    <input type="range" id="education-interest" min="5" max="20" step="0.1" value="9.0">
+                    <div class="value-display">
+                        <span id="education-interest-value">9.0</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="education-tenure">Loan Tenure (years)</label>
+                    <input type="range" id="education-tenure" min="1" max="15" step="1" value="5">
+                    <div class="value-display">
+                        <span id="education-tenure-value">5</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="education-moratorium">Moratorium Period (months)</label>
+                    <input type="range" id="education-moratorium" min="0" max="36" step="1" value="12">
+                    <div class="value-display">
+                        <span id="education-moratorium-value">12</span>
+                    </div>
+                </div>
+                <button class="calculate-btn" id="education-calculate">Calculate EMI</button>
+                <div class="results">
+                    <div class="result-box">
+                        <span class="result-label">Monthly EMI</span>
+                        <span class="result-value" id="education-emi">₹10,379</span>
+                    </div>
+                    <div class="result-box">
+                        <span class="result-label">Total Interest</span>
+                        <span class="result-value" id="education-total-interest">₹1,22,740</span>
+                    </div>
+                    <div class="result-box">
+                        <span class="result-label">Total Payment</span>
+                        <span class="result-value" id="education-total-payment">₹6,22,740</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="bike-calculator" class="calculator">
+                <div class="loan-info">
+                    Bike loans have higher interest rates (10-18%) and very short tenures (1-5 years).
+                </div>
+                <div class="input-group">
+                    <label for="bike-amount">Loan Amount (₹)</label>
+                    <input type="range" id="bike-amount" min="50000" max="500000" step="5000" value="100000">
+                    <div class="value-display">
+                        <span id="bike-amount-value">1,00,000</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="bike-interest">Interest Rate (% p.a.)</label>
+                    <input type="range" id="bike-interest" min="5" max="20" step="0.1" value="12.5">
+                    <div class="value-display">
+                        <span id="bike-interest-value">12.5</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="bike-tenure">Loan Tenure (years)</label>
+                    <input type="range" id="bike-tenure" min="1" max="5" step="1" value="3">
+                    <div class="value-display">
+                        <span id="bike-tenure-value">3</span>
+                    </div>
+                </div>
+                <button class="calculate-btn" id="bike-calculate">Calculate EMI</button>
+                <div class="results">
+                    <div class="result-box">
+                        <span class="result-label">Monthly EMI</span>
+                        <span class="result-value" id="bike-emi">₹3,342</span>
+                    </div>
+                    <div class="result-box">
+                        <span class="result-label">Total Interest</span>
+                        <span class="result-value" id="bike-total-interest">₹20,312</span>
+                    </div>
+                    <div class="result-box">
+                        <span class="result-label">Total Payment</span>
+                        <span class="result-value" id="bike-total-payment">₹1,20,312</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="payment-schedule-container">
+            <h2>Payment Schedule</h2>
+            <div class="payment-schedule" id="payment-schedule"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 EMI Calculator. All Rights Reserved By CODRENIX.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

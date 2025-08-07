@@ -1,0 +1,418 @@
+:root {
+    --primary-color: #4a6bff;
+    --secondary-color: #f5f7ff;
+    --text-color: #333;
+    --bg-color: #ffffff;
+    --card-bg: #f9f9f9;
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --result-bg: #f0f4ff;
+    --hover-color: #3a5bef;
+    --active-color: #2a4bdf;
+}
+
+[data-theme="dark"] {
+    --primary-color: #5d7dff;
+    --secondary-color: #1a1f36;
+    --text-color: #f0f0f0;
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --border-color: #333;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --result-bg: #1a2a4a;
+    --hover-color: #4c6cff;
+    --active-color: #3a5bef;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body {
+    background: url('LOAN.png') no-repeat center center fixed;
+    background-size: cover;
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.opening-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000073;
+    background: radial-gradient(circle,rgba(0, 0, 115, 1) 0%, rgba(0, 0, 0, 1) 100%);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeOut 5s forwards;
+}
+
+.animation-content {
+    text-align: center;
+    color: white;
+    transform: scale(0);
+    animation: scaleIn 1s 1s forwards;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.animation-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.animation-content p {
+    font-size: 1.2rem;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes scaleIn {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+}
+
+.navbar {
+    background-color: var(--card-bg);
+    padding: 15px 20px;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #525254;
+}
+
+.nav-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-menu li {
+    display: inline-block;
+}
+
+.nav-menu .loan-btn {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.nav-menu .loan-btn:hover {
+    background-color: var(--hover-color);
+    color: white;
+}
+
+.nav-menu .loan-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.nav-menu .theme-toggle {
+    display: inline-block;
+}
+
+.nav-menu .theme-toggle button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-menu .theme-toggle button i {
+    position: absolute;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.nav-menu .theme-toggle button .fa-moon {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.nav-menu .theme-toggle button .fa-sun {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+[data-theme="dark"] .nav-menu .theme-toggle button .fa-moon {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+[data-theme="dark"] .nav-menu .theme-toggle button .fa-sun {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    flex: 1;
+}
+
+[data-theme="dark"] .container {
+    background-color: rgba(30, 30, 30, 0.95);
+}
+
+.loan-types {
+    display: none;
+}
+
+.calculator-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.calculator {
+    display: none;
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+.calculator.active {
+    display: block;
+}
+
+.loan-info {
+    background-color: var(--secondary-color);
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.input-group input[type="range"] {
+    width: 100%;
+    height: 8px;
+    /* -webkit-appearance: none; */
+    background: var(--border-color);
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.input-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.value-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--secondary-color);
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.calculate-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.calculate-btn:hover {
+    background-color: var(--hover-color);
+}
+
+.results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.result-box {
+    background-color: var(--result-bg);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.result-label {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+
+.result-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.payment-schedule-container {
+    margin-top: 40px;
+}
+
+.payment-schedule {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-top: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    background-color: var(--secondary-color);
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+}
+
+tr:hover {
+    background-color: var(--secondary-color);
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    margin-top: 20px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        background-color: var(--card-bg);
+        flex-direction: column;
+        padding: 10px;
+        box-shadow: 0 4px 10px var(--shadow-color);
+        align-items: flex-end;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu li {
+        margin: 5px 0;
+        width: 100%;
+    }
+
+    .nav-menu .loan-btn {
+        width: 100%;
+        text-align: right;
+    }
+
+    .nav-menu .theme-toggle {
+        margin: 10px 0;
+        text-align: right;
+    }
+
+    .nav-menu .theme-toggle button {
+        width: 40px;
+        height: 40px;
+    }
+
+    .results {
+        grid-template-columns: 1fr;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .footer {
+        padding: 15px;
+        font-size: 0.8rem;
+    }
+}
